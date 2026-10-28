@@ -1,54 +1,100 @@
 :root {
-  --doradito: #d4cfa17e;
-  --white: #FFFFFF;
-  --black: #050506;
+    --doradito: #D4CFA1;
+    --white: #FFFFFF;
+    --black: #050506;
 }
+
+/* Each theme provides values for the same reusable CSS variables. */
+.light-theme {
+    --bg: #EAE7D0;
+    --fontColor: var(--black);
+    --btnBg: var(--black);
+    --btnFontColor: var(--white);
+    --listColor: #2155A8;
+    --list2Color: #854125;
+    --list3Color: #0E544B;
+    --accentColor: #0E544B;
+    --focusColor: #2155A8;
+}
+
+.dark-theme {
+    --bg: var(--black);
+    --fontColor: var(--doradito);
+    --btnBg: var(--white);
+    --btnFontColor: var(--black);
+    --listColor: #9DBBFF;
+    --list2Color: #E6AA91;
+    --list3Color: #91DFC5;
+    --accentColor: var(--doradito);
+    --focusColor: #F1D999;
+}
+
 body {
-    background: var(--bg);
+    box-sizing: border-box;
+    min-height: 100vh;
+    margin: 0;
+    padding: 32px 20px;
+    background-color: var(--bg);
     color: var(--fontColor);
-    font-family: helvetica;
+    font-family: Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
+
+.page {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    line-height: 1.2;
+}
+
 ul {
-   font-family: helvetica, sans-serif;
-   color: darkgreen;
-   list-style: circle;
+    padding-left: 28px;
+    list-style: circle;
 }
+
 .list {
-    font-family: helvetica, sans-serif;
-    color: #2563EB;
+    color: var(--listColor);
 }
+
 .list2 {
-    font-family: helvetica, sans-serif;
-    color: brown;
+    color: var(--list2Color);
     list-style: square;
 }
-#msg {
-    font-family: helvetica;
-    color: #0E544B;
+
+.list3 {
+    color: var(--list3Color);
 }
+
+#msg {
+    color: var(--accentColor);
+}
+
 #HelloWorld {
     color: var(--fontColor, aliceblue);
 }
+
 .btn {
-  position: absolute;
-  top: 235px;
-  left: 400px;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  border: none;
-  color: var(--btnFontColor);
-  background-color: var(--btnBg);
+    min-height: 50px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 999px;
+    color: var(--btnFontColor);
+    background-color: var(--btnBg);
+    font: inherit;
+    cursor: pointer;
 }
-.light-theme {
-  --bg: var(--doradito);
-  --fontColor: var(--black);
-  --btnBg: var(--black);
-  --btnFontColor: var(--white);
+
+.btn:focus-visible {
+    outline: 3px solid var(--focusColor);
+    outline-offset: 3px;
 }
-.dark-theme {
-  --bg: var(--black);
-  --fontColor: var(--doradito);
-    --btnBg: var(--white);
-  --btnFontColor: var(--black);
+
+@media (prefers-reduced-motion: reduce) {
+    body {
+        transition: none;
+    }
 }
