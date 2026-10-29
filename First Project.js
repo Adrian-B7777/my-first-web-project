@@ -1,16 +1,22 @@
 'use strict';
-alert('Hello World');
+
 const switcher = document.querySelector('.btn');
-switcher.addEventListener('click',function(){
-    document.body.classList.toggle('light-theme');
-    document.body.classList.toggle('dark-theme');
 
-    const className = document.body.className;
-    if(className == "light-theme") {
-    this.textContent = "Batman";
-    } else {
-    this.textContent = "Bruce Wayne";
-    }
+if (switcher) {
+    switcher.addEventListener('click', function () {
+        document.body.classList.toggle('light-theme');
+        document.body.classList.toggle('dark-theme');
 
-    console.log('current class name: ' + className);
-});
+        const className = document.body.className;
+
+        if (className === 'dark-theme') {
+            this.textContent = 'Bruce Wayne (Light Mode)';
+            this.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+            this.textContent = 'Batman (Dark Mode)';
+            this.setAttribute('aria-label', 'Switch to dark mode');
+        }
+
+        console.log('Current theme: ' + className);
+    });
+}
